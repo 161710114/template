@@ -19,8 +19,6 @@ class SuratMasuk extends Migration
             $table->date('tgl_surat');
             $table->string('pengirim');
             $table->string('perihal');
-            $table->string('tertuju');
-            $table->string('alamat');
             $table->unsignedinteger('id_disposisi');
             $table->foreign('id_disposisi')->references('id')->on('disposisis')->onDelete('CASCADE')->onUpdate('CASCADE');
             $table->string('ket_disposisi');

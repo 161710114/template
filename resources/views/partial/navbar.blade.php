@@ -116,21 +116,19 @@
         <a class="nav-link" data-widget="control-sidebar" data-slide="true" href="#"><i
             class="fa fa-th-large"></i></a>
       </li>
+            <li>
+                <a href="{{ route('logout') }}"
+                   onclick="event.preventDefault();
+                   document.getElementById('logout-form').submit();">
+                   Logout
+                </a>
 
-                                
-                                    <li>
-                                        <a href="{{ route('logout') }}"
-                                            onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                            Logout
-                                        </a>
-
-                                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                            {{ csrf_field() }}
-                                        </form>
-                                    </li>
-                                </ul>
-                            </li>
+              <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+               {{ csrf_field() }}
+               </form>
+                  </li>
+                      </ul>
+                          </li>
     </ul>
   </nav>
   <!-- /.navbar -->

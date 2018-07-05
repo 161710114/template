@@ -12,13 +12,17 @@
 */
 
 Route::get('/', function () {
-    return view('layouts.admin');
+    return view('welcome');
 });
 
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Auth::routes();
+Route::resource('disposisi','DisposisiController');
+Route::resource('sm','SuratmasukController');
+Route::resource('sk','SuratKeluarController');
 
-Route::get('/home', 'HomeController@index')->name('home');
+
+
+

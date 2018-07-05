@@ -6,7 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Disposisi extends Model
 {
-      protected $fillable = ['disposisi'];
+    protected $table = 'disposisis';
+    protected $fillable = ['disposisi'];
     	public function Surat_Masuk()
     {
     	return $this->hasMany('App\Surat_Masuk', 'id_disposisi');
