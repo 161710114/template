@@ -17,7 +17,8 @@ class SuratMasuk extends Migration
             $table->increments('id');
             $table->string('no_surat');
             $table->date('tgl_surat');
-            $table->string('pengirim');
+            $table->unsignedinteger('id_instansi');
+            $table->foreign('id_instansi')->references('id')->on('instansis')->onDelete('CASCADE')->onUpdate('CASCADE');
             $table->string('perihal');
             $table->unsignedinteger('id_disposisi');
             $table->foreign('id_disposisi')->references('id')->on('disposisis')->onDelete('CASCADE')->onUpdate('CASCADE');

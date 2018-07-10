@@ -1,10 +1,10 @@
-@extends('layouts.app')
+@extends('layouts.admin')
 @section('content')
 <div class="row">
 	<div class="container">
 		<div class="col-md-12">
 			<div class="panel panel-primary">
-			  <div class="panel-heading">Edit Data Instansi 
+			  <div class="panel-heading"><center><h3>Edit Data Instansi</h3></center>
 			  	<div class="panel-title pull-right"><a href="{{ url()->previous() }}">Kembali</a>
 			  	</div>
 			  </div>
@@ -12,22 +12,22 @@
 			  	<form action="{{ route('instansi.update',$a->id) }}" method="post" >
 			  		<input name="_method" type="hidden" value="PATCH">
         			{{ csrf_field() }}
-			  		<div class="form-group {{ $errors->has('namainstansi') ? ' has-error' : '' }}">
+			  		<div class="form-group {{ $errors->has('nama_instansi') ? ' has-error' : '' }}">
 			  			<label class="control-label">Nama Instansi</label>	
-			  			<input type="text" name="namainstansi" class="form-control" value="{{ $a->namainstansi }}"  required>
-			  			@if ($errors->has('namainstansi'))
+			  			<input type="text" name="nama_instansi" class="form-control" value="{{ $a->nama_instansi }}"  required>
+			  			@if ($errors->has('nama_instansi'))
                             <span class="help-block">
-                                <strong>{{ $errors->first('namainstansi') }}</strong>
+                                <strong>{{ $errors->first('nama_instansi') }}</strong>
                             </span>
                         @endif
 			  		</div>
 
-			  		<div class="form-group {{ $errors->has('kabkot') ? ' has-error' : '' }}">
+			  		<div class="form-group {{ $errors->has('kab_kota') ? ' has-error' : '' }}">
 			  			<label class="control-label">Kabupaten Kota</label>	
-			  			<input type="text" name="kabkot" class="form-control" value="{{ $a->kabkot }}"  required>
-			  			@if ($errors->has('kabkot'))
+			  			<input type="text" name="kab_kota" class="form-control" value="{{ $a->kab_kota }}"  required>
+			  			@if ($errors->has('kab_kota'))
                             <span class="help-block">
-                                <strong>{{ $errors->first('kabkot') }}</strong>
+                                <strong>{{ $errors->first('kab_kota') }}</strong>
                             </span>
                         @endif
 			  		</div>
@@ -72,12 +72,12 @@
                         @endif
 			  		</div>
 
-			  			<div class="form-group {{ $errors->has('nipkepala') ? ' has-error' : '' }}">
+			  			<div class="form-group {{ $errors->has('nip_kepala') ? ' has-error' : '' }}">
 			  			<label class="control-label">NIP Kepala</label>	
-			  			<input type="text" name="nipkepala" class="form-control" value="{{ $a->nipkepala }}"  required>
-			  			@if ($errors->has('nipkepala'))
+			  			<input type="text" name="nip_kepala" class="form-control" value="{{ $a->nip_kepala }}"  required>
+			  			@if ($errors->has('nip_kepala'))
                             <span class="help-block">
-                                <strong>{{ $errors->first('nipkepala') }}</strong>
+                                <strong>{{ $errors->first('nip_kepala') }}</strong>
                             </span>
                         @endif
 			  		</div>

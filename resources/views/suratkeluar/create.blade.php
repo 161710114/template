@@ -4,7 +4,7 @@
 	<div class="container">
 		<div class="col-md-12">
 			<div class="panel panel-primary">
-			  <div class="panel-heading">Tambah Data Surat Keluar 
+			  <div class="panel-heading"><center><h3>Tambah Data Surat Keluar</h3></center> 
 			  	<div class="panel-title pull-right"><a href="{{ url()->previous() }}">Kembali</a>
 			  	</div>
 			  </div>
@@ -13,7 +13,7 @@
 			  		{{ csrf_field() }}
 			  		<div class="form-group {{ $errors->has('no_surat') ? ' has-error' : '' }}">
 			  			<label class="control-label">Nomor Surat</label>	
-			  			<input type="text" name="no_surat" class="form-control"  required>
+			  			<input type="number" name="no_surat" class="form-control"  required>
 			  			@if ($errors->has('no_surat'))
                             <span class="help-block">
                                 <strong>{{ $errors->first('no_surat') }}</strong>
@@ -50,18 +50,22 @@
                             </span>
                         @endif
 			  		</div>
-			  		
-			  			<div class="form-group {{ $errors->has('tertuju') ? ' has-error' : '' }}">
-			  			<label class="control-label">Tertuju </label>	
-			  			<input type="text" name="tertuju" class="form-control"  required>
-			  			@if ($errors->has('tertuju'))
+
+			  			<div class="form-group {{ $errors->has('id_instansi') ? ' has-error' : '' }}">
+			  			<label class="control-label">Instansi</label>	
+			  			<select name="id_instansi" class="form-control">
+			  				@foreach($instansi as $data)
+			  				<option value="{{ $data->id }}">{{ $data->nama_instansi }}</option>
+			  				@endforeach
+			  			</select>
+			  			@if ($errors->has('id_instansi'))
                             <span class="help-block">
-                                <strong>{{ $errors->first('tertuju') }}</strong>
+                                <strong>{{ $errors->first('id_instansi') }}</strong>
                             </span>
                         @endif
 			  		</div>
-
-			  		<div class="form-group {{ $errors->has('alamat') ? ' has-error' : '' }}">
+			  		
+						<div class="form-group {{ $errors->has('alamat') ? ' has-error' : '' }}">
 			  			<label class="control-label">alamat</label>	
 			  			<input type="text" name="alamat" class="form-control"  required>
 			  			@if ($errors->has('alamat'))
@@ -70,6 +74,7 @@
                             </span>
                         @endif
 			  		</div>
+
 			  			<div class="form-group {{ $errors->has('id_disposisi') ? ' has-error' : '' }}">
 			  			<label class="control-label">Disposisi</label>	
 			  			<select name="id_disposisi" class="form-control">

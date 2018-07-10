@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Laratrust\LaratrustFacade as Laratrust;
 
 class HomeController extends Controller
 {
@@ -24,5 +25,19 @@ class HomeController extends Controller
     public function index()
     {
         return view('home');
+        // if (Laratrust::hasRole('Super Admin')) return $this->adminDasboard();
+        // if (Laratrust::hasRole('Admin')) return $this->memberdasboard();
     }
+
+    // protected function adminDasboard()
+    // {
+    //         return view('home');
+    // }
+
+    //     protected function memberdasboard()
+    // {
+    //         return view('welcome');
+    // }
+
+
 }

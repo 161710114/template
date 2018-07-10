@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Surat_Masuk;
 use App\Disposisi;
+use App\instansis;
 use Session;
 class SuratMasukController extends Controller
 {
@@ -16,7 +17,8 @@ class SuratMasukController extends Controller
     public function index()
     {
         $sm = Surat_Masuk::with('Disposisi')->get();
-        return view('suratmasuk.index',compact('sm'));    }
+        return view('suratmasuk.index',compact('sm'));
+    }
 
     /**
      * Show the form for creating a new resource.
@@ -26,7 +28,8 @@ class SuratMasukController extends Controller
     public function create()
     {
         $disposisi = Disposisi::all();
-        return view('suratmasuk.create',compact('disposisi'));
+        $instansi = instansis::all();
+        return view('suratmasuk.create',compact('disposisi','instansi'));
     }
 
     /**
@@ -40,16 +43,16 @@ class SuratMasukController extends Controller
          $this->validate($request,[
             'no_surat' => 'required|',
             'tgl_surat' => 'required|',
-            'pengirim' => 'required|',
-            'perihal' => 'required|',
+            'id_instansi' => 'required|',
             'id_disposisi' => 'required',
+            'perihal' => 'required|',
             'ket_disposisi' => 'required|',
             'file' => 'required|'
         ]);
         $sm = new Surat_Masuk;
         $sm->no_surat = $request->no_surat;
         $sm->tgl_surat = $request->tgl_surat;
-        $sm->pengirim = $request->pengirim;
+        $sm->id_instansi = $request->id_instansi;
         $sm->perihal = $request->perihal;
         $sm->id_disposisi = $request->id_disposisi;
         $sm->ket_disposisi = $request->ket_disposisi;
@@ -72,7 +75,8 @@ class SuratMasukController extends Controller
      */
     public function show($id)
     {
-        //
+        $sm = Surat_Masuk::findOrFail($id);
+        return view('suratmasuk.show',compact('sm'));
     }
 
     /**
@@ -85,8 +89,10 @@ class SuratMasukController extends Controller
     {
         $sm = Surat_Masuk::findOrFail($id);
         $disposisi = Disposisi::all();
+        $instansi = instansis::all();
         $selectedDisposisi = Surat_Masuk::findOrFail($id)->id_disposisi;
-        return view('suratmasuk.edit',compact('sm','disposisi','selectedDisposisi'));
+        $selectedInstansi = Surat_Masuk::findOrFail($id)->id_instansi;
+        return view('suratmasuk.edit',compact('sm','disposisi','instansi','selectedDisposisi','selectedInstansi'));
     }
 
     /**
@@ -101,7 +107,7 @@ class SuratMasukController extends Controller
         $this->validate($request,[
             'no_surat' => 'required|',
             'tgl_surat' => 'required|',
-            'pengirim' => 'required|',
+            'id_instansi' => 'required|',
             'perihal' => 'required|',
             'id_disposisi' => 'required',
             'ket_disposisi' => 'required|',
@@ -110,7 +116,7 @@ class SuratMasukController extends Controller
         $sm = Surat_Masuk::findOrFail($id);
         $sm->no_surat = $request->no_surat;
         $sm->tgl_surat = $request->tgl_surat;
-        $sm->pengirim = $request->pengirim;
+        $sm->id_instansi = $request->id_instansi;
         $sm->perihal = $request->perihal;
         $sm->id_disposisi = $request->id_disposisi;
         $sm->ket_disposisi = $request->ket_disposisi;

@@ -14,5 +14,10 @@ class Surat_Keluar extends Model
     	return $this->belongsTo('App\Disposisi', 'id_disposisi');
     }
 
+        public function Instansi()
+    {
+    	return $this->belongsTo('App\instansis', 'id_instansi');
+    }
+
     public $timestamps = true;
 }

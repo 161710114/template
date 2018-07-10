@@ -19,7 +19,8 @@ class SuratKeluar extends Migration
             $table->date('tgl_surat');
             $table->string('pengirim');
             $table->string('perihal');
-            $table->string('tertuju');
+            $table->unsignedinteger('id_instansi');
+            $table->foreign('id_instansi')->references('id')->on('instansis')->onDelete('CASCADE')->onUpdate('CASCADE');
             $table->string('alamat');
              $table->unsignedinteger('id_disposisi');
             $table->foreign('id_disposisi')->references('id')->on('disposisis')->onDelete('CASCADE')->onUpdate('CASCADE');

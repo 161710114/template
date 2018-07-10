@@ -4,7 +4,7 @@
 	<div class="container">
 		<div class="col-md-12">
 			<div class="panel panel-primary">
-			  <div class="panel-heading">Edit Data Surat Masuk 
+			  <div class="panel-heading"><center><h3>Edit Data Surat Masuk</h3></center> 
 			  	<div class="panel-title pull-right"><a href="{{ url()->previous() }}">Kembali</a>
 			  	</div>
 			  </div>
@@ -32,17 +32,21 @@
                         @endif
 			  		</div>
 
-			  			<div class="form-group {{ $errors->has('pengirim') ? ' has-error' : '' }}">
-			  			<label class="control-label">Pengirim</label>	
-			  			<input type="text" value="{{ $sm->pengirim }}" name="pengirim" class="form-control"  required>
-			  			@if ($errors->has('pengirim'))
+			  			<div class="form-group {{ $errors->has('id_instansi') ? ' has-error' : '' }}">
+			  			<label class="control-label">Instansi</label>	
+			  			<select name="id_instansi" class="form-control">
+			  				@foreach($instansi as $data)
+			  				<option value="{{ $data->id }}" {{ $selectedInstansi == $data->id ? 'selected="selected"' : '' }} >{{ $data->nama_instansi }}</option>
+			  				@endforeach
+			  			</select>
+			  			@if ($errors->has('id_instansi'))
                             <span class="help-block">
-                                <strong>{{ $errors->first('pengirim') }}</strong>
+                                <strong>{{ $errors->first('id_instansi') }}</strong>
                             </span>
                         @endif
 			  		</div>
 
-			  			<div class="form-group {{ $errors->has('perihal') ? ' has-error' : '' }}">
+						<div class="form-group {{ $errors->has('perihal') ? ' has-error' : '' }}">
 			  			<label class="control-label">Perihal</label>	
 			  			<input type="text" value="{{ $sm->perihal }}" name="perihal" class="form-control"  required>
 			  			@if ($errors->has('perihal'))
@@ -76,7 +80,7 @@
 			  		</div>
 
 			  			<div class="form-group {{ $errors->has('file') ? ' has-error' : '' }}">
-			  			<label class="control-label">Filet</label>	
+			  			<label class="control-label">File</label>	
 			  			<input type="file" value="{{ $sm->file }}" name="file" class="form-control"  required>
 			  			@if ($errors->has('file'))
                             <span class="help-block">
